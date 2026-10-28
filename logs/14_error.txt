@@ -1,0 +1,30 @@
+.F
+================================== FAILURES ===================================
+_____________________ test_order_is_placed[chromium-2-20] _____________________
+
+page = <Page url='http://127.0.0.1:3000/'>
+
+    def test_order_is_placed(page: Page):
+        """Заказ оформляется (с паузой)"""
+        page.goto("/")
+        page.get_by_test_id("order-btn").click()
+        page.wait_for_timeout(1500)  # пауза «с запасом»
+        visible = page.get_by_test_id("result").is_visible()
+>       assert visible is True
+E       assert False is True
+
+tests\test_task1_timing.py:10: AssertionError
+============================== warnings summary ===============================
+tests/test_task1_timing.py::test_order_is_placed[chromium-1-20]
+  C:\Users\Арсений\Documents\Агенты\flaky_lab\.venv\Lib\site-packages\_pytest\fixtures.py:1392: PytestRemovedIn10Warning: Session-scoped fixtures defined as instance methods are deprecated.
+  Instance attributes set in the 'base_url' fixture will NOT be visible to test methods,
+  as each test gets a new instance while the fixture runs only once per class.
+  Use a @classmethod decorator below @pytest.fixture and set attributes on cls instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#class-scoped-fixture-as-instance-method
+    fixturefunc = resolve_fixture_function(fixturedef, request)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_task1_timing.py::test_order_is_placed[chromium-2-20] - asse...
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 1 passed, 1 warning in 5.18s
