@@ -8,6 +8,11 @@ from server import HOST, PORT, Handler
 
 expect.set_options(timeout=5000)  # проверки expect(...) ждут до 5 секунд
 
+collect_ignore_glob = [
+    "bug/*",        # исходные нестабильные версии тестов не собираем
+    "artifacts/*",  # копии для скриншотов редактора тоже не собираем
+]
+
 _server = None
 
 
